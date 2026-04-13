@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "Home",
+    "story": "Our Story",
+    "objective": "Objective",
+    "contact": "Contact",
+    "switchLang": "Language"
+  },
+  "hero": {
+    "title": "Oromo Christian Church Utrecht",
+    "subtitle": "A place where people can meet Jesus, believers can engage in life-giving community, and everyone is welcome.",
+    "cta": "Join Us Sunday",
+    "learnMore": "Learn More"
+  },
+  "home": {
+    "welcomeTitle": "Welcome to Our Church",
+    "welcomeText": "It is a place where people can meet Jesus, believers can engage in life-giving community, and everyone is welcome. The church is open to all Oromos and a welcoming community, and we are always happy to connect with new members and visitors, other communities whose mission and vision is based on and focused at the proclamation of the Gospel into His People and the World.",
+    "worshipTitle": "Worship",
+    "worshipText": "The primary existence for church is to worship God. Even though worship is broad concept, in this part we are dealing with worshiping God with songs. The ministry is led by its committee under church leadership. The ministry members have monthly service or fellowship to encourage and strengthen one another.",
+    "communityTitle": "Community",
+    "communityText": "To encourage, support, and pray for each other as members of the family of God.",
+    "serviceDay": "Sunday Service",
+    "serviceLocation": "Trumanplein 1, 3527 CX Utrecht"
+  },
+  "story": {
+    "title": "Our Story",
+    "subtitle": "How it all began",
+    "p1": "The Oromo Christian Church Utrecht in the Netherlands is the product of a prayer group started by Oromo Christian people who were attending prayers for Edossa Birassa Ayana.",
+    "p2": "Edossa Birassa Ayana got a car accident on December 19, 2008. He was in a coma for 3 months and his brain was operated on 11 times. He became handicapped and lives in a care home.",
+    "p3": "Oromo Christians were going to visit him and thanking our God for his miracle. Then, the Oromo Christian Church Utrecht began on 28-08-2011 and was officially registered on 27 June 2012 as a church of our Lord Jesus Christ based on the principles of the Holy Bible.",
+    "adminTitle": "Administration Members",
+    "admin1": "Birassa Ayana — Chairman",
+    "admin2": "Tadesse Teferi Mekonen — Secretary",
+    "admin3": "Tilahun Negari — Treasurer"
+  },
+  "objective": {
+    "title": "Our Objective",
+    "p1": "The purpose of the denomination is evangelism, worship of God the Father and the Son, and the Holy Spirit, one God, almighty Creator of the heavens and the earth, everyone is in charge: of all his creations, both visible and invisible, eternal.",
+    "p2": "Bringing the message of the Holy Bible to all members, and organizing various church related activities such as diaconate ministry, church conferences, self-employed projects, elderly support group, youth programs, childcare tasks and other social and cultural activities as is required.",
+    "p3": "Organizing and conducting training, workshops, seminars and conferences on spiritual themes.",
+    "p4": "The scattered Oromo Christians and those who have an interest in our God — to bring them together, to lead and strengthen them in their faith.",
+    "p5": "To promote cooperation with other Christian churches and humanitarian organizations in Europe and Oromia – Ethiopia."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "churchAddress": "Church Address",
+    "address": "Fazantenlaan 4, 3721 DN Bilthoven",
+    "worshipPlace": "Sunday Worship Place",
+    "worshipAddress": "Trumanplein 1, 3527 CX Utrecht",
+    "phone": "Phone",
+    "phoneNumber": "0684916547",
+    "email": "Email",
+    "formTitle": "Send Us a Message",
+    "name": "Your Name",
+    "emailField": "Your Email",
+    "subject": "Subject",
+    "attachment": "Attachment",
+    "message": "Your Message",
+    "send": "Send Message",
+    "chooseFile": "Choose File",
+    "noFile": "No file chosen"
+  },
+  "footer": {
+    "rights": "© {year} Oromo Christian Church Utrecht. All rights reserved.",
+    "address": "Fazantenlaan 4, 3721 DN Bilthoven"
+  }
+}

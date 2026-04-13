@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "home": "Home",
+    "story": "Historie",
+    "objective": "Doelstelling",
+    "contact": "Contact",
+    "switchLang": "Taal"
+  },
+  "hero": {
+    "title": "Oromo Christelijke Kerk Utrecht",
+    "subtitle": "Een plek waar mensen Jezus kunnen ontmoeten, gelovigen deel kunnen nemen aan een levengevende gemeenschap, en iedereen welkom is.",
+    "cta": "Bezoek Ons Zondag",
+    "learnMore": "Meer Weten"
+  },
+  "home": {
+    "welcomeTitle": "Welkom bij Onze Kerk",
+    "welcomeText": "Het is een plek waar mensen Jezus kunnen ontmoeten, gelovigen deel kunnen nemen aan een levengevende gemeenschap, en iedereen welkom is. De kerk staat open voor alle Oromo's en is een gastvrije gemeenschap. Wij zijn altijd blij om in contact te komen met nieuwe leden en bezoekers, en andere gemeenschappen wiens missie en visie gebaseerd is op de verkondiging van het Evangelie aan Zijn Volk en de Wereld.",
+    "worshipTitle": "Eredienst",
+    "worshipText": "Het primaire bestaansrecht van de kerk is het aanbidden van God. Hoewel aanbidding een breed concept is, gaat het in dit deel om het aanbidden van God met liederen. De bediening wordt geleid door haar comité onder kerkelijk leiderschap. De leden van de bediening hebben maandelijkse diensten of fellowship om elkaar te bemoedigen en te versterken.",
+    "communityTitle": "Gemeenschap",
+    "communityText": "Elkaar bemoedigen, ondersteunen en voor elkaar bidden als leden van de familie van God.",
+    "serviceDay": "Zondagsdienst",
+    "serviceLocation": "Trumanplein 1, 3527 CX Utrecht"
+  },
+  "story": {
+    "title": "Onze Historie",
+    "subtitle": "Hoe het begon",
+    "p1": "De Oromo Christelijke Kerk Utrecht in Nederland is het resultaat van een gebedsgroep die is opgericht door Oromo-christenen die gebeden bijwoonden voor Edossa Birassa Ayana.",
+    "p2": "Edossa Birassa Ayana kreeg op 19 december 2008 een auto-ongeluk. Hij lag drie maanden in coma en zijn hersenen werden elf keer geopereerd. Hij werd gehandicapt en woonde in Verpleeghuis Albert van Koningsbruggen (Axion Continu).",
+    "p3": "Oromo-christenen bezochten hem en dankten onze God voor zijn wonder. De Oromo Christelijke Kerk Utrecht is op 28-08-2011 begonnen en op 27 juni 2012 officieel ingeschreven bij de Kamer van Koophandel.",
+    "adminTitle": "Bestuursleden",
+    "admin1": "Birassa Ayana — Voorzitter",
+    "admin2": "Tadesse Teferi Mekonen — Secretaris",
+    "admin3": "Tilahun Negari — Penningmeester"
+  },
+  "objective": {
+    "title": "Onze Doelstelling",
+    "p1": "De doelstelling van het kerkgenootschap is evangelisatie, aanbidding van God de Vader en de Zoon, en de Heilige Geest, één God, almachtige Schepper van de hemelen en de aarde, iedereen de leiding heeft: over al zijn creaties zowel het zichtbare als het onzichtbare, eeuwig.",
+    "p2": "Het brengen van de boodschap van de Heilige Bijbel aan alle leden, en verschillende kerk gerelateerde activiteiten te organiseren zoals diaconaat ministerie, kerkconferenties, zelfstandige projecten, ouderen ondersteuning groep, jongerenprogramma's, kindzorgtaken en andere sociale en culturele activiteiten als is vereist.",
+    "p3": "Het organiseren en het uitvoeren van trainingen, workshops, seminars en conferenties over spirituele thema's.",
+    "p4": "De verspreide Oromo Christenen en degenen die geïnteresseerd zijn in onze God samenbrengen, te leiden en hen in hun geloof te versterken.",
+    "p5": "Het bevorderen van samenwerking met andere Christelijke kerken en humanitaire organisaties in Europa en Oromiya – Ethiopië."
+  },
+  "contact": {
+    "title": "Contact",
+    "churchAddress": "Kerkadres",
+    "address": "Fazantenlaan 4, 3721 DN Bilthoven",
+    "worshipPlace": "Kerkdienst Adres",
+    "worshipAddress": "Trumanplein 1, 3527 CX Utrecht",
+    "phone": "Telefoon",
+    "phoneNumber": "0684916547",
+    "email": "Email",
+    "formTitle": "Stuur Ons een Bericht",
+    "name": "Naam",
+    "emailField": "Email",
+    "subject": "Onderwerp",
+    "attachment": "Bijlage",
+    "message": "Bericht",
+    "send": "Verstuur",
+    "chooseFile": "Bestand Kiezen",
+    "noFile": "Geen bestand gekozen"
+  },
+  "footer": {
+    "rights": "© {year} Oromo Christelijke Kerk Utrecht. Alle rechten voorbehouden.",
+    "address": "Fazantenlaan 4, 3721 DN Bilthoven"
+  }
+}

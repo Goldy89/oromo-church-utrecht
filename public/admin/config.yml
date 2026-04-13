@@ -1,0 +1,283 @@
+# ======================================================================
+# Decap CMS Configuration — Oromo Christian Church Utrecht
+# ======================================================================
+# Currently using 'test-repo' backend for local development.
+#
+# When you push to GitHub, replace the backend section with:
+#   backend:
+#     name: github
+#     repo: YOUR_USERNAME/oromo-church-utrecht   # <-- your GitHub repo
+#     branch: main
+#     base_url: https://YOUR_SITE_URL            # <-- optional, for OAuth
+# ======================================================================
+
+backend:
+  name: test-repo
+
+media_folder: public/images
+public_folder: /images
+
+# i18n settings
+i18n:
+  structure: multiple_files
+  locales: [en, nl, om]
+  default_locale: en
+
+collections:
+  # ------------------------------------------------------------------
+  # Navigation
+  # ------------------------------------------------------------------
+  - name: nav
+    label: "Navigation"
+    files:
+      - name: nav_en
+        label: "Navigation — English"
+        file: "public/content/en.json"
+        fields:
+          - label: "Navigation"
+            name: nav
+            widget: object
+            fields:
+              - { label: "Home", name: home, widget: string }
+              - { label: "Story", name: story, widget: string }
+              - { label: "Objective", name: objective, widget: string }
+              - { label: "Contact", name: contact, widget: string }
+              - { label: "Language Label", name: switchLang, widget: string }
+          - label: "Hero Section"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: text }
+              - { label: "Call to Action Button", name: cta, widget: string }
+              - { label: "Learn More Button", name: learnMore, widget: string }
+          - label: "Home Page"
+            name: home
+            widget: object
+            fields:
+              - { label: "Welcome Title", name: welcomeTitle, widget: string }
+              - { label: "Welcome Text", name: welcomeText, widget: text }
+              - { label: "Worship Title", name: worshipTitle, widget: string }
+              - { label: "Worship Text", name: worshipText, widget: text }
+              - { label: "Community Title", name: communityTitle, widget: string }
+              - { label: "Community Text", name: communityText, widget: text }
+              - { label: "Service Day", name: serviceDay, widget: string }
+              - { label: "Service Location", name: serviceLocation, widget: string }
+          - label: "Story Page"
+            name: story
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Subtitle", name: subtitle, widget: string }
+              - { label: "Paragraph 1", name: p1, widget: text }
+              - { label: "Paragraph 2", name: p2, widget: text }
+              - { label: "Paragraph 3", name: p3, widget: text }
+              - { label: "Admin Section Title", name: adminTitle, widget: string }
+              - { label: "Admin 1 (Name — Role)", name: admin1, widget: string }
+              - { label: "Admin 2 (Name — Role)", name: admin2, widget: string }
+              - { label: "Admin 3 (Name — Role)", name: admin3, widget: string }
+          - label: "Objective Page"
+            name: objective
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Objective 1", name: p1, widget: text }
+              - { label: "Objective 2", name: p2, widget: text }
+              - { label: "Objective 3", name: p3, widget: text }
+              - { label: "Objective 4", name: p4, widget: text }
+              - { label: "Objective 5", name: p5, widget: text }
+          - label: "Contact Page"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Church Address Label", name: churchAddress, widget: string }
+              - { label: "Address", name: address, widget: string }
+              - { label: "Worship Place Label", name: worshipPlace, widget: string }
+              - { label: "Worship Address", name: worshipAddress, widget: string }
+              - { label: "Phone Label", name: phone, widget: string }
+              - { label: "Phone Number", name: phoneNumber, widget: string }
+              - { label: "Email Label", name: email, widget: string }
+              - { label: "Form Title", name: formTitle, widget: string }
+              - { label: "Name Field", name: name, widget: string }
+              - { label: "Email Field", name: emailField, widget: string }
+              - { label: "Subject Field", name: subject, widget: string }
+              - { label: "Attachment Label", name: attachment, widget: string }
+              - { label: "Message Field", name: message, widget: string }
+              - { label: "Send Button", name: send, widget: string }
+              - { label: "Choose File", name: chooseFile, widget: string }
+              - { label: "No File Text", name: noFile, widget: string }
+          - label: "Footer"
+            name: footer
+            widget: object
+            fields:
+              - { label: "Copyright (use {year} for current year)", name: rights, widget: string }
+              - { label: "Address", name: address, widget: string }
+
+      - name: nav_nl
+        label: "Navigation — Nederlands"
+        file: "public/content/nl.json"
+        fields:
+          - label: "Navigatie"
+            name: nav
+            widget: object
+            fields:
+              - { label: "Home", name: home, widget: string }
+              - { label: "Historie", name: story, widget: string }
+              - { label: "Doelstelling", name: objective, widget: string }
+              - { label: "Contact", name: contact, widget: string }
+              - { label: "Taal Label", name: switchLang, widget: string }
+          - label: "Hero Sectie"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Titel", name: title, widget: string }
+              - { label: "Ondertitel", name: subtitle, widget: text }
+              - { label: "Call to Action Knop", name: cta, widget: string }
+              - { label: "Meer Weten Knop", name: learnMore, widget: string }
+          - label: "Home Pagina"
+            name: home
+            widget: object
+            fields:
+              - { label: "Welkom Titel", name: welcomeTitle, widget: string }
+              - { label: "Welkom Tekst", name: welcomeText, widget: text }
+              - { label: "Eredienst Titel", name: worshipTitle, widget: string }
+              - { label: "Eredienst Tekst", name: worshipText, widget: text }
+              - { label: "Gemeenschap Titel", name: communityTitle, widget: string }
+              - { label: "Gemeenschap Tekst", name: communityText, widget: text }
+              - { label: "Dienst Dag", name: serviceDay, widget: string }
+              - { label: "Dienst Locatie", name: serviceLocation, widget: string }
+          - label: "Historie Pagina"
+            name: story
+            widget: object
+            fields:
+              - { label: "Titel", name: title, widget: string }
+              - { label: "Ondertitel", name: subtitle, widget: string }
+              - { label: "Alinea 1", name: p1, widget: text }
+              - { label: "Alinea 2", name: p2, widget: text }
+              - { label: "Alinea 3", name: p3, widget: text }
+              - { label: "Bestuur Titel", name: adminTitle, widget: string }
+              - { label: "Bestuurslid 1 (Naam — Rol)", name: admin1, widget: string }
+              - { label: "Bestuurslid 2 (Naam — Rol)", name: admin2, widget: string }
+              - { label: "Bestuurslid 3 (Naam — Rol)", name: admin3, widget: string }
+          - label: "Doelstelling Pagina"
+            name: objective
+            widget: object
+            fields:
+              - { label: "Titel", name: title, widget: string }
+              - { label: "Doelstelling 1", name: p1, widget: text }
+              - { label: "Doelstelling 2", name: p2, widget: text }
+              - { label: "Doelstelling 3", name: p3, widget: text }
+              - { label: "Doelstelling 4", name: p4, widget: text }
+              - { label: "Doelstelling 5", name: p5, widget: text }
+          - label: "Contact Pagina"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Titel", name: title, widget: string }
+              - { label: "Kerkadres Label", name: churchAddress, widget: string }
+              - { label: "Adres", name: address, widget: string }
+              - { label: "Kerkdienst Label", name: worshipPlace, widget: string }
+              - { label: "Kerkdienst Adres", name: worshipAddress, widget: string }
+              - { label: "Telefoon Label", name: phone, widget: string }
+              - { label: "Telefoonnummer", name: phoneNumber, widget: string }
+              - { label: "Email Label", name: email, widget: string }
+              - { label: "Formulier Titel", name: formTitle, widget: string }
+              - { label: "Naam Veld", name: name, widget: string }
+              - { label: "Email Veld", name: emailField, widget: string }
+              - { label: "Onderwerp Veld", name: subject, widget: string }
+              - { label: "Bijlage Label", name: attachment, widget: string }
+              - { label: "Bericht Veld", name: message, widget: string }
+              - { label: "Verstuur Knop", name: send, widget: string }
+              - { label: "Bestand Kiezen", name: chooseFile, widget: string }
+              - { label: "Geen Bestand", name: noFile, widget: string }
+          - label: "Footer"
+            name: footer
+            widget: object
+            fields:
+              - { label: "Copyright (gebruik {year} voor huidig jaar)", name: rights, widget: string }
+              - { label: "Adres", name: address, widget: string }
+
+      - name: nav_om
+        label: "Navigation — Afaan Oromoo"
+        file: "public/content/om.json"
+        fields:
+          - label: "Navigeeshinii"
+            name: nav
+            widget: object
+            fields:
+              - { label: "Fuula Jalqabaa", name: home, widget: string }
+              - { label: "Seenaa", name: story, widget: string }
+              - { label: "Kaayyoo", name: objective, widget: string }
+              - { label: "Quunnamtii", name: contact, widget: string }
+              - { label: "Afaan Label", name: switchLang, widget: string }
+          - label: "Hero Kutaa"
+            name: hero
+            widget: object
+            fields:
+              - { label: "Mata Duree", name: title, widget: string }
+              - { label: "Ibsa Gabaabaa", name: subtitle, widget: text }
+              - { label: "CTA Buttoonii", name: cta, widget: string }
+              - { label: "Dabalata Baraa Buttoonii", name: learnMore, widget: string }
+          - label: "Fuula Jalqabaa"
+            name: home
+            widget: object
+            fields:
+              - { label: "Mata Duree Simannaa", name: welcomeTitle, widget: string }
+              - { label: "Barreeffama Simannaa", name: welcomeText, widget: text }
+              - { label: "Mata Duree Waaqeffannaa", name: worshipTitle, widget: string }
+              - { label: "Barreeffama Waaqeffannaa", name: worshipText, widget: text }
+              - { label: "Mata Duree Hawaasaa", name: communityTitle, widget: string }
+              - { label: "Barreeffama Hawaasaa", name: communityText, widget: text }
+              - { label: "Guyyaa Tajaajilaa", name: serviceDay, widget: string }
+              - { label: "Bakka Tajaajilaa", name: serviceLocation, widget: string }
+          - label: "Fuula Seenaa"
+            name: story
+            widget: object
+            fields:
+              - { label: "Mata Duree", name: title, widget: string }
+              - { label: "Mata Duree Xiqqaa", name: subtitle, widget: string }
+              - { label: "Keeyyata 1", name: p1, widget: text }
+              - { label: "Keeyyata 2", name: p2, widget: text }
+              - { label: "Keeyyata 3", name: p3, widget: text }
+              - { label: "Mata Duree Bulchiinsaa", name: adminTitle, widget: string }
+              - { label: "Bulchiinsa 1 (Maqaa — Gahee)", name: admin1, widget: string }
+              - { label: "Bulchiinsa 2 (Maqaa — Gahee)", name: admin2, widget: string }
+              - { label: "Bulchiinsa 3 (Maqaa — Gahee)", name: admin3, widget: string }
+          - label: "Fuula Kaayyoo"
+            name: objective
+            widget: object
+            fields:
+              - { label: "Mata Duree", name: title, widget: string }
+              - { label: "Kaayyoo 1", name: p1, widget: text }
+              - { label: "Kaayyoo 2", name: p2, widget: text }
+              - { label: "Kaayyoo 3", name: p3, widget: text }
+              - { label: "Kaayyoo 4", name: p4, widget: text }
+              - { label: "Kaayyoo 5", name: p5, widget: text }
+          - label: "Fuula Quunnamtii"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Mata Duree", name: title, widget: string }
+              - { label: "Teessoo Waldaa Label", name: churchAddress, widget: string }
+              - { label: "Teessoo", name: address, widget: string }
+              - { label: "Bakka Waaqeffannaa Label", name: worshipPlace, widget: string }
+              - { label: "Teessoo Waaqeffannaa", name: worshipAddress, widget: string }
+              - { label: "Bilbila Label", name: phone, widget: string }
+              - { label: "Lakkoofsa Bilbilaa", name: phoneNumber, widget: string }
+              - { label: "Imeelii Label", name: email, widget: string }
+              - { label: "Mata Duree Foormii", name: formTitle, widget: string }
+              - { label: "Dirree Maqaa", name: name, widget: string }
+              - { label: "Dirree Imeelii", name: emailField, widget: string }
+              - { label: "Dirree Mata Duree", name: subject, widget: string }
+              - { label: "Faayilii Maxxansuu Label", name: attachment, widget: string }
+              - { label: "Dirree Ergaa", name: message, widget: string }
+              - { label: "Buttoonii Ergaa", name: send, widget: string }
+              - { label: "Faayilii Filadhu", name: chooseFile, widget: string }
+              - { label: "Faayiliin hin Filatamne", name: noFile, widget: string }
+          - label: "Miilla Fuulaa"
+            name: footer
+            widget: object
+            fields:
+              - { label: "Mirga Waraabbii ({year} fayyadami)", name: rights, widget: string }
+              - { label: "Teessoo", name: address, widget: string }
