@@ -12,7 +12,9 @@
 # ======================================================================
 
 backend:
-  name: test-repo
+  name: github
+  repo: Goldy89/oromo-church-utrecht
+  branch: main
 
 media_folder: public/images
 public_folder: /images
