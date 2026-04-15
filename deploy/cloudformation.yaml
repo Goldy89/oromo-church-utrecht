@@ -157,6 +157,25 @@ Resources:
         SigningBehavior: always
         SigningProtocol: sigv4
 
+  # CloudFront Function to rewrite /admin/ → /admin/index.html
+  AdminRewriteFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: !Sub '${ProjectName}-admin-rewrite'
+      AutoPublish: true
+      FunctionCode: |
+        function handler(event) {
+          var request = event.request;
+          var uri = request.uri;
+          if (uri === '/admin' || uri === '/admin/') {
+            request.uri = '/admin/index.html';
+          }
+          return request;
+        }
+      FunctionConfig:
+        Comment: Rewrite /admin/ to /admin/index.html
+        Runtime: cloudfront-js-2.0
+
   # CloudFront Distribution
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
@@ -224,6 +243,9 @@ Resources:
           Compress: true
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6  # CachingOptimized
           ResponseHeadersPolicyId: 67f7725c-6f97-4210-82d7-5512b31e9d03  # SecurityHeadersPolicy
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt AdminRewriteFunction.FunctionARN
         CustomErrorResponses:
           - ErrorCode: 403
             ResponseCode: 200
