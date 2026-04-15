@@ -11,6 +11,16 @@ REGION="eu-west-1"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# ── Domain configuration (fill these in after completing Steps 1-3 below) ──
+# Leave empty to use the default CloudFront URL.
+# Step 1: Register domain in Route 53 console
+# Step 2: Request ACM certificate in us-east-1 (see README)
+# Step 3: Fill in these values:
+DOMAIN_NAME="oromochristian.com"
+CERTIFICATE_ARN="arn:aws:acm:us-east-1:817888696791:certificate/6caefaf7-595a-4b81-916e-1f6ca83bccac"
+HOSTED_ZONE_ID="Z08184761QGSA4MQ7DG6Z"
+GITHUB_CLIENT_ID="Ov23liIENsrs5B8ogFjo"
+
 # Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -55,6 +65,23 @@ check_prereqs() {
 }
 
 #-----------------------------------------------------------------------------
+# Package OAuth Lambda
+#-----------------------------------------------------------------------------
+package_lambda() {
+  log "Packaging OAuth Lambda..."
+  cd "$SCRIPT_DIR/oauth"
+  zip -j "$SCRIPT_DIR/oauth-lambda.zip" index.js
+  ok "Lambda packaged → deploy/oauth-lambda.zip"
+}
+
+upload_lambda() {
+  log "Uploading Lambda package to S3..."
+  aws s3 cp "$SCRIPT_DIR/oauth-lambda.zip" "s3://${PROJECT_NAME}-website/oauth-lambda.zip" \
+    --region "$REGION"
+  ok "Lambda package uploaded to S3"
+}
+
+#-----------------------------------------------------------------------------
 # Build the frontend
 #-----------------------------------------------------------------------------
 build_frontend() {
@@ -76,14 +103,25 @@ build_frontend() {
 deploy_infra() {
   log "Deploying CloudFormation stack: $STACK_NAME"
 
-  STACK_EXISTS=$(aws cloudformation describe-stacks --stack-name "$STACK_NAME" --region "$REGION" 2>/dev/null && echo "yes" || echo "no")
+  if aws cloudformation describe-stacks --stack-name "$STACK_NAME" --region "$REGION" >/dev/null 2>&1; then
+    STACK_EXISTS="yes"
+  else
+    STACK_EXISTS="no"
+  fi
 
   if [ "$STACK_EXISTS" == "yes" ]; then
     log "Updating existing stack..."
+    PARAMS="ParameterKey=ProjectName,ParameterValue=$PROJECT_NAME"
+    PARAMS="$PARAMS ParameterKey=GitHubClientId,ParameterValue=$GITHUB_CLIENT_ID"
+    [ -n "$DOMAIN_NAME" ] && PARAMS="$PARAMS ParameterKey=DomainName,ParameterValue=$DOMAIN_NAME"
+    [ -n "$CERTIFICATE_ARN" ] && PARAMS="$PARAMS ParameterKey=CertificateArn,ParameterValue=$CERTIFICATE_ARN"
+    [ -n "$HOSTED_ZONE_ID" ] && PARAMS="$PARAMS ParameterKey=HostedZoneId,ParameterValue=$HOSTED_ZONE_ID"
+
     aws cloudformation update-stack \
       --stack-name "$STACK_NAME" \
       --template-body "file://$SCRIPT_DIR/cloudformation.yaml" \
-      --parameters ParameterKey=ProjectName,ParameterValue="$PROJECT_NAME" \
+      --parameters $PARAMS \
+      --capabilities CAPABILITY_NAMED_IAM \
       --region "$REGION" \
       --tags Key=Project,Value="$PROJECT_NAME" \
       2>/dev/null || { warn "No stack updates needed"; return 0; }
@@ -92,10 +130,17 @@ deploy_infra() {
     aws cloudformation wait stack-update-complete --stack-name "$STACK_NAME" --region "$REGION"
   else
     log "Creating new stack..."
+    PARAMS="ParameterKey=ProjectName,ParameterValue=$PROJECT_NAME"
+    PARAMS="$PARAMS ParameterKey=GitHubClientId,ParameterValue=$GITHUB_CLIENT_ID"
+    [ -n "$DOMAIN_NAME" ] && PARAMS="$PARAMS ParameterKey=DomainName,ParameterValue=$DOMAIN_NAME"
+    [ -n "$CERTIFICATE_ARN" ] && PARAMS="$PARAMS ParameterKey=CertificateArn,ParameterValue=$CERTIFICATE_ARN"
+    [ -n "$HOSTED_ZONE_ID" ] && PARAMS="$PARAMS ParameterKey=HostedZoneId,ParameterValue=$HOSTED_ZONE_ID"
+
     aws cloudformation create-stack \
       --stack-name "$STACK_NAME" \
       --template-body "file://$SCRIPT_DIR/cloudformation.yaml" \
-      --parameters ParameterKey=ProjectName,ParameterValue="$PROJECT_NAME" \
+      --parameters $PARAMS \
+      --capabilities CAPABILITY_NAMED_IAM \
       --region "$REGION" \
       --tags Key=Project,Value="$PROJECT_NAME"
 
@@ -197,6 +242,8 @@ check_prereqs
 case "$ACTION" in
   full)
     build_frontend
+    package_lambda
+    upload_lambda
     deploy_infra
     get_stack_outputs
     upload_to_s3
@@ -204,6 +251,8 @@ case "$ACTION" in
     print_summary
     ;;
   infra)
+    package_lambda
+    upload_lambda
     deploy_infra
     get_stack_outputs
     print_summary

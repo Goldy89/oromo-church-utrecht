@@ -15,6 +15,8 @@ backend:
   name: github
   repo: Goldy89/oromo-church-utrecht
   branch: main
+  base_url: https://oromochristian.com
+  auth_endpoint: /api/auth
 
 media_folder: public/images
 public_folder: /images
