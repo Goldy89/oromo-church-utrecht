@@ -50,14 +50,27 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
       Policies:
-        - PolicyName: SSMReadSecret
+        - PolicyName: SSMAccess
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
               - Effect: Allow
                 Action:
                   - ssm:GetParameter
-                Resource: !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter${GitHubClientSecretParam}'
+                  - ssm:PutParameter
+                Resource:
+                  - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter${GitHubClientSecretParam}'
+                  - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/jwt-secret'
+                  - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/${ProjectName}/admin-users'
+        - PolicyName: S3ContentAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                Resource: !Sub 'arn:aws:s3:::${ProjectName}-website/content/*'
 
   OAuthLambdaFunction:
     Type: AWS::Lambda::Function
@@ -75,6 +88,9 @@ Resources:
         Variables:
           GITHUB_CLIENT_ID: !Ref GitHubClientId
           GITHUB_CLIENT_SECRET_PARAM: !Ref GitHubClientSecretParam
+          S3_BUCKET: !Sub '${ProjectName}-website'
+          JWT_SECRET_PARAM: !Sub '/${ProjectName}/jwt-secret'
+          ADMIN_USERS_PARAM: !Sub '/${ProjectName}/admin-users'
       Tags:
         - Key: Project
           Value: !Ref ProjectName
@@ -214,10 +230,12 @@ Resources:
           - PathPattern: /api/*
             TargetOriginId: OAuthApiOrigin
             ViewerProtocolPolicy: redirect-to-https
-            AllowedMethods: [GET, HEAD, OPTIONS]
+            AllowedMethods: [GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE]
             CachedMethods: [GET, HEAD]
             ForwardedValues:
               QueryString: true
+              Headers:
+                - Authorization
               Cookies:
                 Forward: none
             MinTTL: 0

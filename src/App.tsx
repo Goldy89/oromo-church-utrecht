@@ -5,6 +5,10 @@ import HomePage from './pages/HomePage';
 import StoryPage from './pages/StoryPage';
 import ObjectivePage from './pages/ObjectivePage';
 import ContactPage from './pages/ContactPage';
+import AdminLogin from './admin/AdminLogin';
+import AdminLayout from './admin/AdminLayout';
+import AdminDashboard from './admin/AdminDashboard';
+import AdminUsers from './admin/AdminUsers';
 
 function App() {
   return (
@@ -16,6 +20,11 @@ function App() {
             <Route path="/story" element={<StoryPage />} />
             <Route path="/objective" element={<ObjectivePage />} />
             <Route path="/contact" element={<ContactPage />} />
+          </Route>
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route element={<AdminLayout />}>
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/users" element={<AdminUsers />} />
           </Route>
         </Routes>
       </BrowserRouter>
